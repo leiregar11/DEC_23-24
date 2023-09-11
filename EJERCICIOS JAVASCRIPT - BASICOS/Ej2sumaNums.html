@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+
+    <p>Introduce 2 numeros para ver la suma de estos</p>
+    <label>Num 1<input type="number" id="num1"></label>
+    <br>
+    <label>Num 2<input type="number" id="num2"></label>
+    <button onclick="suma()">enviar</button>
+    <p id="resultado"></p>
+ <script>
+        function suma(){
+           let num1=document.getElementById("num1").value;
+           let num2=document.getElementById("num2").value;
+           let result= parseFloat(num1)+parseFloat(num2);
+            document.getElementById("resultado").innerHTML="El resultado de "+num1.toString()+"+"+num2.toString()+" es: "+result.toString();
+
+        }
+         
+    </script>
+
+</body>
+</html>
