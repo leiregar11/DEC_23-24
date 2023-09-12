@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJ8</title>
+</head>
+<body>
+    <p id="texto"></p>
+    <script>
+        var texto="";
+        let num=parseInt(prompt("introduce un numero"));
+        if(num%2==0 || num%3==0 || num%5==0 || num%7==0){
+            if(num%2==0){
+            texto=texto+" "+num+ " es divisible entre 2,";
+        }
+
+         if(num%3==0){
+            texto=texto+" "+num+ " es divisible entre 3,";
+        }
+
+        if(num%5==0){
+            texto=texto+" "+num+ " es divisible entre 5,";
+        }
+
+        if(num%7==0){
+            texto=texto+" "+num+ " es divisible entre 7";
+        }
+        }
+        
+        else{
+            texto=texto+" "+num+" no es divisible entre 2,3,5,7";
+        }
+        
+        document.getElementById("texto").innerHTML=texto;
+      
+    </script>
+        
+    
+    
+</body>
+</html>

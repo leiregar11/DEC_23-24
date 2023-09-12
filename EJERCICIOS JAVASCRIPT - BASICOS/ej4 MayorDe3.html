@@ -4,19 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EJ4</title>
 </head>
 <body>
     <script>
         
-        let num=parseInt(prompt("dame un numero"));
-        if(num%2==0){
-            alert(num+" es divisible entre 2");
-        }else{
-            alert(num+" no es divisible entre 2");
+        var num=0;
+       for(let i=0; i<3;i++){
+        let num1=parseInt(prompt("dame un numero"));
+        if(num<num1){
+            num=num1;
         }
-       
-      
+       }
+       alert("el numero mas grande es "+num)
     </script>
         
     

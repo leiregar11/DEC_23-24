@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJ11</title>
+</head>
+<body>
+    <p id="texto"></p>
+    <script>
+        let num=parseInt(prompt("Introduce un numero para saber si es primo"));
+        let texto="";
+        let cont=0;
+        for(i=1;i<=num;i++){
+            if(num%i==0){
+                cont++;
+            }
+        }
+        if(cont>2){
+            texto=num+" no es un numero primo";
+        }else{
+            texto=num+" es un numero primo";
+
+        }
+        document.getElementById("texto").textContent=texto;
+    </script>
+</body>
+</html>

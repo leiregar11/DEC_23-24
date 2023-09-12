@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJ9</title>
+</head>
+<body>
+    <p id="texto"></p>
+    <script>
+       
+        let num=parseInt(prompt("Introduce un numero para ver sus divisibles"));
+        let texto= num+" es divisibl entre: ";
+        for(i=1;i<=num;i++){
+            if(num%i==0){
+                texto=texto+i+" ";
+            }
+        }
+        document.getElementById("texto").textContent=texto;
+    </script>
+    
+</body>
+</html>
