@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJ1</title>
+</head>
+<body>
+    <label>Introduce una frase</label>
+    <input type="text" id="texto">
+    <button onclick="letras()";>Enter</button>
+    <p id="result"></p>
+
+    <script>
+        function letras(){
+            let mayus=0;
+            let minus=0;
+            let frase=document.getElementById("texto").value;
+            for(let i=0;i<frase.length;i++){
+                
+                let caracter=frase[i];
+                if (caracter >= 'A' && caracter <= 'Z') {
+                    mayus++;
+                }
+                
+                else if (caracter >= 'a' && caracter <= 'z') {
+                    minus++;
+                }
+
+            }
+            document.getElementById("result").textContent="La frase introducida tiene "+ (mayus+minus)+" letras, "+mayus+" en mayúscula y "+ minus+" en minúscula";
+
+        };
+        
+
+    </script>
+    
+</body>
+</html>

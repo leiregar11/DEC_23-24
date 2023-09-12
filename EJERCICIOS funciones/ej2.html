@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJ2</title>
+</head>
+<body>
+    <label>Introduce un numero para saber si es par o impar</label>
+    <input type="text" id="numero">
+    <button onclick="ParImpar()">Enter</button>
+    <p id="result"></p>
+
+    <script>
+        function ParImpar(){
+            let numero=document.getElementById("numero").value;
+            if(numero%2==0){
+                document.getElementById("result").textContent=numero+" es un numero par";
+            }
+            else{
+                document.getElementById("result").textContent=numero+" es un numero impar";
+
+            }
+        }
+    </script>
+</body>
+</html>
