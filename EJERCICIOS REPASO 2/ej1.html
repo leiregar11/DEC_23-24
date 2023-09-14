@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJ1</title>
+</head>
+<body>
+    <label>Introduce un limite superior<input type="text" id="superior"></label>
+
+</br>
+</br>
+
+    <label>Introduce un limite inferior<input type="text" id="inferior"></label></br>
+
+    <button onclick="comunicar()">Enter</button>
+
+    <p id="respuesta"></p>
+
+
+    <script>
+
+        function comunicar(){
+
+            let superior=parseInt(document.getElementById("superior").value);
+            let inferior=parseInt(document.getElementById("inferior").value);
+            
+            let respuesta="";
+            if(superior<=inferior){
+                respuesta="Los parametos introducidos no son correctos, intentalo de nuevo";
+            }else{
+               respuesta= numerosComprendidos(superior, inferior);
+            }
+
+            document.getElementById("respuesta").textContent=respuesta;
+        }
+
+
+        function numerosComprendidos(superior, inferior){
+            let numeros="";
+            let cont=0;
+            for(let i=inferior;i<superior;i++){
+                if(i%2==0 && i%3==0){
+                    numeros=numeros+i+" ";
+                    cont++;
+                }
+            }
+            numeros= "Entre los limites "+inferior+ " y "+superior+ " hay un total de "+cont+" numeros, que son los siguientes: "+numeros;
+            return numeros;
+        }
+
+        
+
+
+
+
+    </script>
+    
+</body>
+</html>

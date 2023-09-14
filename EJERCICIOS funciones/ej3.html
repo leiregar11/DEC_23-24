@@ -6,6 +6,35 @@
     <title>EJ3</title>
 </head>
 <body>
+    <label>Introduce un los numeros del DNI para ver la letra</label>
+    <input type="text" id="dni">
+    <button onclick="NumDNI()">Enter</button>
+    <p id="result"></p>
+
+    <script>
+        var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+        function NumDNI(){
+            let dni=document.getElementById("dni").value;
+            let resultado;
+            if(DNIvalido(dni)){
+                let resultLetra=letras[dni%23];
+                console.log(dni%23);
+                resultado="La letra del DNI "+dni+" es "+resultLetra;
+
+            }else{
+                resultado="Intentalo de nuevo introducioendo un numero entre 0 y 99999999";
+            }
+
+            document.getElementById("result").textContent=resultado;
+        }
+
+        function DNIvalido(dni){
+            if(dni>=0 && dni<=99999999 && !isNaN(dni)){
+                return true;
+            }
+            return false;
+        }
+    </script>
     
 </body>
 </html>

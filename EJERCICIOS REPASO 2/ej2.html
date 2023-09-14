@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <p id="respuesta"></p>
+
+
+    <script>
+
+        function infoVendedores(){
+
+            let importes=[];
+            let vendedores=[];
+
+            var numVendedores=parseInt(prompt("La informacion de cuantos endedores quieres introducir?"));
+            for(let i=0;i<numVendedores;i++){
+
+                let codVendedor=prompt("Introduce el codigo del "+(i+1)+"º vendedor ");
+
+                vendedores.push(codVendedor);
+
+                let impVentas=parseInt(prompt("Introduce el importe de  ventas al mes del "+(i+1)+"º vendedor "));
+
+                importes.push(impVentas);
+
+            }
+
+            impotMax(importes,vendedores);
+
+        }
+
+        function impotMax(importes, vendedores){
+            let maxImport=0;
+            let vendedoresMax=[];
+            for(let i=0;i<importes;i++){
+
+                if(maxImport<importes[i]){
+                    maxImport=importes[i];
+                }
+
+                if(maxImport=importes[i]){
+                    vendedoresMax.push(vendedores[i]);
+                }
+            }
+
+            document.getElementById("respuesta").textContent="El import maximo de ventas es "+ maxImport+ " los codigos de los vendedores que han alcanzado este maximo son: "+vendedoresMax.toString();
+
+        }
+       
+
+    </script>
+
+    
+</body>
+</html>

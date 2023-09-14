@@ -14,13 +14,19 @@
     <script>
         function ParImpar(){
             let numero=document.getElementById("numero").value;
-            if(numero%2==0){
+            if(esPar(numero)){
                 document.getElementById("result").textContent=numero+" es un numero par";
             }
             else{
                 document.getElementById("result").textContent=numero+" es un numero impar";
 
             }
+        }
+        function esPar(numero){
+            if(numero%2==0){
+                return true;
+            }
+            return false;
         }
     </script>
 </body>

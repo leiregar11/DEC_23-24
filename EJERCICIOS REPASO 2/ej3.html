@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+
+        let codigos=[];
+        let tipo=[];
+        let duracion=[];
+        let importes=[];
+
+
+
+
+        do{
+            let cod=prompt("codigo");
+            let tp=prompt("codigo");
+            let dur=prompt("codigo");
+
+            if(codValido(cod) && duracionValida(dur) &&tipValido(tp)){
+                codigos.push(tip);
+                tipo.push(tp);
+                duracion.push(dur);
+
+
+                for(i=0;i<codigos.length;i++){
+
+                    importes.push(calcularImporte(tipo[i],duracion[i]));
+                }
+
+                i++;
+            }
+            else{
+                console.log("Datos invalidos");
+            }
+               
+         
+           
+
+        }while(i<5);
+
+        function calcularImporte(tipo,duracion){
+            
+            if(tipo==1){
+                
+            }
+           
+
+
+
+
+            return ;
+        }
+    </script>
+    
+</body>
+</html>

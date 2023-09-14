@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJ4</title>
+</head>
+<body>
+
+    <label>Introduce una frase
+        <input type="text" id="frase">
+    </label>
+    <button onclick="buscarVocales()">Enter</button>
+    <p id="resultado"></p>
+    <script>
+        function buscarVocales(){
+            let frase=document.getElementById("frase").value. toLowerCase();
+            let cont=0;
+            
+            for(let i=0;i<frase.length;i++){
+               if(esVocal(frase[i])){
+                    cont++;
+               }
+            }
+
+            document.getElementById("resultado").textContent="La frase dada tiene "+cont+" vocales";
+        }
+
+        function esVocal(caracter){
+            let vocales= ["a","e","i","o","u"];
+            if(caracter >= 'a' && caracter <= 'z') {
+                for(let j=0;j<vocales.length;j++){
+                    if(caracter==vocales[j]){
+                        return true;
+                    }
+                }
+                return false;
+            }
+            
+            return false;
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <label>Introduce una frase para saber si es palindroma
+        <input type="text" id="frase">
+        <button onclick="comprobarFrase()">Enter</button>
+    </label>
+    <p id="result"></p>
+    <script>
+
+        function comprobarFrase(){
+            let frase=document.getElementById("frase").value.toLowerCase();
+            
+
+            if(!esPalindromo(frase)){
+              
+                 document.getElementById("result").textContent="No es palindromo";
+                }else{
+                    document.getElementById("result").textContent="Es palindromo";
+                }
+            // let fraseSoloLetras=soloLetras(frase);
+            
+            //     if(fraseSoloLetras!=darVueltaFrase(fraseSoloLetras)){
+
+            //      document.getElementById("result").textContent="No es palindromo";
+            //     }else{
+            //         document.getElementById("result").textContent="Es palindromo";
+            //     }
+            
+
+        }
+
+        function esPalindromo(frase){
+            frase=soloLetras(frase);
+            for(let i=0;i<=frase.length/2;i++){
+                if(frase[i]!== frase[frase.length-1-i]){
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // function darVueltaFrase(frase){
+        //     let fraseGirada="";
+        //     for(i=0;i<frase.length;i++){
+        //        fraseGirada+=frase[frase.length-1-i]; 
+          
+        //     }
+        //     return fraseGirada;
+        // }
+
+        
+        function soloLetras(frase){
+            let frasNueva="";
+            for(i=0;i<frase.length;i++){
+                if(frase[i] >= 'a' && frase[i] <= 'z'){
+                    frasNueva+=frase[i]; 
+                }
+                
+            }
+
+            return frasNueva;
+        }
+
+        
+    </script>
+</body>
+</html>
