@@ -14,6 +14,7 @@
         let tipo=[];
         let duracion=[];
         let importes=[];
+        let sup3=[];
 
 
 
@@ -23,18 +24,13 @@
             let tp=prompt("codigo");
             let dur=prompt("codigo");
 
-            if(codValido(cod) && duracionValida(dur) &&tipValido(tp)){
-                codigos.push(tip);
+            if(datosValidos(cod,dur, tp)){
+                codigos.push(cod);
                 tipo.push(tp);
                 duracion.push(dur);
 
-
-                for(i=0;i<codigos.length;i++){
-
-                    importes.push(calcularImporte(tipo[i],duracion[i]));
-                }
-
                 i++;
+                
             }
             else{
                 console.log("Datos invalidos");
@@ -44,19 +40,43 @@
            
 
         }while(i<5);
+        let contSup3=0;
+        let minMax=0;
+        let codMinMax=0;
+        for(i=0;i<codigos.length;i++){
 
-        function calcularImporte(tipo,duracion){
-            
-            if(tipo==1){
-                
+            // importes.push(calcularImporte(codigos[i],tipo[i],duracion[i]));
+            if(duracion>3){
+                contSup3++;
+                if(tipo==1){
+                    importes.push( 10+((duracion-3)*2));
+                }else{
+                    importes.push(15+((duracion-3)*3));
+                }
+            }else{
+                if(tipo==1){
+                     importes.push(10);
+                }else{
+                     importes.push(15);
+                }
             }
-           
-
-
-
-
-            return ;
+            if(minMax<duracion[i]){
+                minMax=duracion[i];
+                codMinMax=codigos[i];
+            }
+            
         }
+        console.log("cant sup "+contSup3);
+        console.log("porcen sup "+(codigos.length+contSup3)/100);
+
+        function datosValidos(cod,dur, tp){
+            if(tp==1 || tp==2 && duracion>0){
+                return true;
+            }
+            return false;
+        }
+    
+    
     </script>
     
 </body>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let tempVal=true;
+        let seguir="";
+        var temps=[];
+        let contB=0;
+        let sumTB=0;
+        let contM=0;
+        let maxA=0;
+        do{
+
+            do{
+
+                let temp=prompt("Introduce una temperatura");
+                if(temp<=70&&temp>=(-40)){
+                    temps.push(temp);
+                    tempVal=true;
+                }
+             }while(tempVal==false);
+
+                
+             seguir=prompt("¿Desea seguir introduciendo temperaturas?(S/N)");
+console.log(seguir);
+        }while(seguir.toLowerCase()!="n");
+
+
+        for(let i=0;i<temps.length;i++){
+            if(temps[i]<16){
+                sumTB+=temps[i];
+
+                contB++;
+            }else if(temps[i]<26){
+                contM++;
+            }else{
+                if(maxA<temps[i]){
+                    maxA=temps[i];
+                }
+            }
+        }
+        console.log("se introdujeron "+contM+" tempretaturas medias");
+        console.log("Media de temperaturas bajas "+sumTB/contB);
+        console.log("Temp maxima "+maxA);
+    </script>
+</body>
+</html>

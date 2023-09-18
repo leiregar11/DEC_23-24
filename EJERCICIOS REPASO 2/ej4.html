@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+<script>
+
+var estudiantes=[];
+
+     do{
+            var estudiante= new Object();
+             estudiante.matricula=prompt("Introduce el numero de matricula del alumo");
+             estudiante.asistencia=prompt("Introduce 1 si el alumno a estado presente, si no lo ha estado introduce 0");
+             estudiante.calificacion=prompt("Calificacion: número de 1-10");
+
+
+
+
+        }while(i<10);
+
+
+        let asistentes=0;
+        let caliAusente=0;
+        let aprov=0;
+        for(let i=0; i<estudiantes.length;i++){
+
+        if(estudiantes[i].asistencia==1){
+            asistentes++;       
+        
+            if(cali>=5){
+                aprov++;
+            }
+                    
+        }
+        
+        else{
+            caliAusente+=estudiantes[i].calificacion;
+        }
+        if(cali<estudiantes[i].calificacion){
+            calMax=estudiantes[i].calificacion;
+            codMejor=estudiantes[i].matricula;
+
+        }
+
+
+        }
+
+        console.log("porcentage presentes %"+(estudiantes.length*asistentes)/100);
+        console.log("promedio nota ausentes"+caliAusente/(estudiante.length-asistentes));
+        console.log("alumnos aprobados presentes"+(asistentes*aprov)/100);
+        console.log("La matricula del alumno con mejor nota es: "+codMejor+", y su nota es: "+calMax);
+
+     
+</script>
+
+</body>
+</html>
