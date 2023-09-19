@@ -16,11 +16,16 @@
         let maxA=0;
         do{
 
-       
+            do{
+
                 let temp=prompt("Introduce una temperatura");
-              
+                if(temp<= 70 && temp>= -40){
                     temps.push(temp);
-                   
+                    tempVal=true;
+                }
+             }while(tempVal==false);
+
+                
              seguir=prompt("¿Desea seguir introduciendo temperaturas?(S/N)");
 console.log(seguir);
         }while(seguir.toLowerCase()!="n");

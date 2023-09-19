@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        do{
+            do{
+            let opcionMenu=parseInt(prompt("Elige una opcion del siguiente menu:<br>1. Factorial (hacer factorial de num)<br>2. Primo (decir si num es primo)<br>3. Fibonacci (visualizar los num primeros números de la serie Fibonacci)<br>4. Divisores (fisualizar divisores de num)<br>5. Salir"));
+            if(opcionMenu>5 && opcionMenu<1){
+                alert("Opcion no valida, vuelve a intentarlo");
+            }
+
+            }while(opcionMenu>5 && opcionMenu<1);
+
+            let num=parseInt(prompt("Introduce un numero para ejecutar la opcion elegida"));
+
+            switch(opcionMenu){
+                case 1:
+                    if (num === 0 || num === 1) {
+                        console.log(1);
+                    }
+                    console.log("El factorial de "+num+" es: "+num * factorialRecursivo(num - 1));
+
+                    break;
+                case 2:
+                    if (numero <= 1) {
+                        congole.log(num+" no es un numero primo");
+
+                        }
+                    for (var i = 2; i <= Math.sqrt(numero); i++) {
+                        if (numero % i === 0) {
+                        congole.log(num+" no es un numero primo");
+
+                        }
+                    }
+
+                    congole.log(num+" es un numero primo");
+                   
+                    break;
+                case 3:
+                    let numAux1 = 0;
+                    let numAux2 = 1;
+
+                    for (let i = 2; i <= n; i++) {
+                        let temp = numAux1 + numAux2;
+                        numAux1 = numAux2;
+                        numAux2 = temp;
+                    }
+
+                    console.log("El número de Fibonacci de " + numero + " es " + numAux2);
+
+                    break;
+                case 4:
+                let divisores = [];
+
+                    for (let i = 1; i <= numero / 2; i++) {
+                    if (numero % i === 0) {
+                        divisores.push(i);
+                    }
+                    }
+
+                    divisores.push(numero); 
+
+                    console.log("Los divisores de " + numero + " son: " + divisores.join(", "));
+                    break;
+            }
+            
+
+        }while(opcionMenu!=5);
+    </script>
+</body>
+</html>
