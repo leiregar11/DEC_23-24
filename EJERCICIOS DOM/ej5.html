@@ -10,7 +10,7 @@
 <body>
    <h1>Acceso a los párrafos</h1>
    <div id="cuadro"></div>
-     <p >Este es el primer párrafo de esta página</p>
+     <p id="prueba">Este es el primer párrafo de esta página</p>
      <p>Este es el segundo párrafo</p>
      <p>Y este el tercero</p>
      <p onclick="acceder()">Pulsa en este cuarto párrafo para volver 
@@ -21,18 +21,17 @@
          <script>
             
 
-            function acceder(){
-               let cuadro=document.getElementById("cuadro");
-               let textos=document.querySelectorAll("body > p");
-                for (let i = 0; i < textos.length; i++) {
-                 let texto=textos[i];
-                 let copia=document.createElement("p");
-                 copia.textContent=texto.textContent;
+            let textos=document.querySelectorAll("body > p");
+            textos.addEventListener('click', function(event) {
+                  let texto= event.target.textContent
+                  let copia=document.createElement("p");
+                 copia.textContent=texto;
                  cuadro.appendChild(copia);
-                }
+               });
+             
+
                   
                 
-            }
 
             function borrar(){
                let cuadro=document.getElementById("cuadro");
