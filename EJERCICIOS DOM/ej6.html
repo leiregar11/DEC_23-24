@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>Manipular nodos</title> 
+        <style type="text/css">
+        #cuadro  { width: 400px; height: 250px; border: 1px black solid; float: right; 
+                    font-family: arial; overflow: auto }
+        p  { font-size: 1em; font-family: arial;  }
+        </style>
+    </head>
+    <body>
+    <h1>Manipulación  de nodos. </h1>
+    <div id="cuadro">
+        <h4 id="primero">primer texto fijo</h4>
+        <h4 id="segundo">Segundo texto fijo</h4>
+        <h4 id="tercero">Tercer texto fijo</h4>
+    </div>
+        <p>Pulsa en los siguientes párrafos, para cambiar los textos de la caja de la derecha</p>
+        <p onclick="restaurar()">Pulsa en este párrafo para restaurar el estado inicial de la caja.</p>
+        <p onclick="debajo()">Insertar nuevo elemento debajo de todos</p>
+        <p onclick="delante()">Insertar nuevo elemento delante del segundo.</p>
+        <p onclick="reemplazar()">reemplazar el primer elemento de la caja por otro nuevo</p>
+        <p onclick="suprimir()">Suprimir el tercer párrafo</p>
+        <p onclick="cambiar()">Poner el segundo texto en último lugar</p>
+        <p onclick="copiar()">Copia del nuevo elemento, se inserta al final</p>
+    
+        <script>
+                var cuadro=document.getElementById("cuadro");
+                var conDeb=1;
+                var conDel=1;
+                var rempl=1;
+                var textosDefault=[];
+
+                let txtCuad=cuadro.getElementsByTagName("h4");
+                for (let j = 0; j < txtCuad.length; j++) {
+                    textosDefault.push(txtCuad[j]);
+                    
+                }
+
+            function restaurar(){
+                // let cuadro=document.getElementById("cuadro");
+                
+                while(cuadro.firstChild){
+                    cuadro.removeChild(cuadro.firstChild);
+                }
+                for (let index = 0; index < textosDefault.length; index++) {
+                    cuadro.appendChild(textosDefault[index]);
+                    
+                }
+
+            }
+            function debajo(){
+                
+                // let cuadro=document.getElementById("cuadro");
+
+                let nElemento=document.createElement("h4");
+                nElemento.textContent="Nuevo elemento deb"+conDeb;
+                conDeb++;
+                cuadro.appendChild(nElemento);
+
+            }
+            function delante(){
+                // let cuadro=document.getElementById("cuadro");
+                // let segun=cuadro.children[1];
+
+                let nElemento=document.createElement("h4");
+                nElemento.textContent="Nuevo elemento del"+conDel;
+                conDel++;
+
+                cuadro.insertBefore(nElemento,cuadro.children[1]);
+
+            }
+            function reemplazar(){
+                let nElemento=document.createElement("h4");
+                nElemento.textContent="Remplazo "+rempl;
+                rempl++;
+                cuadro.replaceChild(nElemento,cuadro.children[0]);
+
+            }
+            function suprimir(){
+                cuadro.removeChild(cuadro.children[2]);
+
+            }
+            function cambiar(){
+                let segun=cuadro.children[1];
+
+                cuadro.removeChild(segun);
+                cuadro.appendChild(segun);
+
+            }
+            function copiar(){
+                let elementos=document.querySelectorAll("h4");
+                for (let i = 0; i < elementos.length; i++) {
+                    let element = elementos[i];
+                    if(element.textContent.indexOf("Nuevo")>=0){
+                        cuadro.appendChild(element.cloneNode(true));
+                    }
+                    }
+                    
+                }
+
+            
+        </script>
+    </body>
+</html>

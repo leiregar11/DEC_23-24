@@ -10,30 +10,23 @@
 <body>
    <h1>Acceso a los párrafos</h1>
    <div id="cuadro"></div>
-      <p >Este es el primer párrafo de esta página</p>
-      <p>Este es el segundo párrafo</p>
-      <p>Y este el tercero</p>
+      <p onclick="copiar(this)">Este es el primer párrafo de esta página</p>
+      <p onclick="copiar(this)">Este es el segundo párrafo</p>
+      <p onclick="copiar(this)">Y este el tercero</p>
       <p onclick="acceder()">Pulsa en este cuarto párrafo para volver 
          a verlos todos en el recuadro de la derecha.</p>
       <p onclick="borrar()">Y pulsa en el quinto para borrar el 
          recuadro de la derecha.</p> 
 
          <script>
-            let textos=document.querySelectorAll("body > p");
-            let parrafosAfectados=[];
-            for (let i = 0; i < 3; i++) {
-               parrafosAfectados[i] = textos[i];
-               
-            }
-            parrafosAfectados.forEach(parrafo => {parrafo.addEventListener('click', function() {
+            function copiar(linea){
                borrar();
-                  const texto = parrafo.textContent;
+               let parrafos=document.getElementsByTagName("p");
+               let parrafo=parrafos[linea];
                   let copia=document.createElement("p");
-               copia.textContent=texto;
-               cuadro.appendChild(copia);
-
-               });
-            });    
+                  copia.textContent=parrafo.textContent;
+                  cuadro.appendChild(copia);
+            } 
 
             function acceder(){
                borrar();
