@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej2 BOM</title>
+</head>
+<body>
+    <button onclick="mostrar()">Mostrar</button>
+    <div id="texto">
+
+    </div>
+    <script>
+        let div=document.getElementById("texto");
+        function mostrar(){
+            let div=document.getElementById("texto");
+
+            let location=document.createElement("p");
+            location.textContent="URL de la pg actual "+window.location.href;
+            div.appendChild(location);
+
+            let nav=document.createElement("p");
+            nav.textContent="Navegador actual "+navigator.appCodeName;
+            div.appendChild(nav);
+
+            let title=document.createElement("p");
+            title.textContent="Titulo de la pg actual "+document.title;
+            div.appendChild(title);
+
+            let forms=document.createElement("p");
+            forms.textContent="Formularios en la pg actual "+document.forms.length;
+            div.appendChild(forms);
+
+            let tamaño=document.createElement("p");
+            tamaño.textContent="Tamaño de la pg actual width: " + window.innerWidth + "px height: " + window.innerHeight + "px";
+            div.appendChild(tamaño);
+
+            let historial=document.createElement("p");
+            if(window.history.length>=1){
+                historial.textContent="Historial muy largo";
+            }else{
+                historial.textContent="Sigue navegando";
+            }
+            div.appendChild(historial);
+        }
+        
+    </script>
+</body>
+</html>
