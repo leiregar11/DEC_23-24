@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJ3</title>
+</head>
+<body>
+    <button onclick="abrirNuevaVentana()">Abrir Nueva Ventana</button>
+
+    <script>
+
+let nuevaVentana;
+
+function abrirNuevaVentana() {
+            // Abrir una nueva ventana de 200x200 píxeles
+            nuevaVentana = window.open('', '', 'width=200,height=200');
+
+            crearBoton("arriba",arb);
+            crearBoton("abajo",abj);
+            crearBoton("izquierda",izq);
+            crearBoton("derecha",der);
+            crearBoton("doble",doble);
+            crearBoton("mitad",mitad);
+
+        }
+
+        function crearBoton(nombre,funcion){
+            let boton=document.createElement("button");
+            boton.value=nombre;
+            boton.textContent=nombre;
+            boton.onclick=funcion;
+            nuevaVentana.document.body.appendChild(boton);
+        }
+        function arb(){
+            nuevaVentana.moveBy(0,-10);
+        }
+        function izq(){          
+            nuevaVentana.moveBy(-10,0);
+
+        }
+        function der(){           
+            nuevaVentana.moveBy(10,0);
+
+        }
+        function abj(){           
+            nuevaVentana.moveBy(0,10);
+
+        }
+        function doble() {
+            let w=nuevaVentana.outerWidth * 2;
+            let h=nuevaVentana.outerHeight * 2;
+            if(w<=screen.availWidth && h<=screen.availHeight){
+                nuevaVentana.resizeBy(nuevaVentana.outerWidth,nuevaVentana.outerHeight);
+            }
+        
+        }
+
+        function mitad() {
+
+            let w=nuevaVentana.outerWidth / 2;
+            let h=nuevaVentana.outerHeight / 2;
+            if(w>=100 && h>=100){
+                nuevaVentana.resizeBy(-w,-h);
+            }
+            
+        }
+
+    </script>
+</body>
+
+</html>

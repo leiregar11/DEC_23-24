@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EJ3</title>
+    <title>ej4</title>
 </head>
 <body>
     <button onclick="abrirNuevaVentana()">Abrir Nueva Ventana</button>
+    <button onclick="pararNuevaVentana()">parar Nueva Ventana</button>
 
     <script>
 
@@ -15,7 +16,7 @@ let nuevaVentana;
 function abrirNuevaVentana() {
             // Abrir una nueva ventana de 200x200 píxeles
             nuevaVentana = window.open('', '', 'width=200,height=200');
-
+            nuevaVentana.onmouseover=escapa;
             crearBoton("arriba",arb);
             crearBoton("abajo",abj);
             crearBoton("izquierda",izq);
@@ -32,34 +33,48 @@ function abrirNuevaVentana() {
             boton.onclick=funcion;
             nuevaVentana.document.body.appendChild(boton);
         }
+        function escapa(){
+            // nuevaVentana.moveTo(0,0)
+            nuevaVentana.moveTo(getRandom(screen.width),getRandom(screen.height))
+        }
+        function getRandom( max) {
+            return Math.random() * (max - (-1)) + (-1);
+        }
+        function pararNuevaVentana(){
+            nuevaVentana.onmouseover="";
+        }
         function arb(){
-            nuevaVentana.moveBy(0,-10);
+            nuevaVentana.moveBy(0,-50);
         }
         function izq(){          
-            nuevaVentana.moveBy(-10,0);
+            nuevaVentana.moveBy(-50,0);
 
         }
         function der(){           
-            nuevaVentana.moveBy(10,0);
+            nuevaVentana.moveBy(50,0);
 
         }
         function abj(){           
-            nuevaVentana.moveBy(0,10);
+            nuevaVentana.moveBy(0,50);
 
         }
         function doble() {
-            nuevaVentana.resizeTo(
-                Math.min(nuevaVentana.outerWidth * 2, screen.width),
-                Math.min(nuevaVentana.outerHeight * 2, screen.height)
-            );
+            let w=nuevaVentana.outerWidth * 2;
+            let h=nuevaVentana.outerHeight * 2;
+            if(w<=screen.availWidth && h<=screen.availHeight){
+                nuevaVentana.resizeBy(nuevaVentana.outerWidth,nuevaVentana.outerHeight);
+            }
+        
         }
 
         function mitad() {
 
-            nuevaVentana.resizeTo(
-                Math.max(nuevaVentana.outerWidth / 2, 100),
-                Math.max(nuevaVentana.outerHeight / 2, 100)
-            );
+            let w=nuevaVentana.outerWidth / 2;
+            let h=nuevaVentana.outerHeight / 2;
+            if(w>=100 && h>=100){
+                nuevaVentana.resizeBy(-w,-h);
+            }
+            
         }
 
     </script>
