@@ -16,7 +16,7 @@ let nuevaVentana;
 function abrirNuevaVentana() {
             // Abrir una nueva ventana de 200x200 píxeles
             nuevaVentana = window.open('', '', 'width=200,height=200');
-            nuevaVentana.onmouseover=escapa;
+            nuevaVentana.addEventListener("mouseover",escapa);
             crearBoton("arriba",arb);
             crearBoton("abajo",abj);
             crearBoton("izquierda",izq);
@@ -41,7 +41,8 @@ function abrirNuevaVentana() {
             return Math.random() * (max - (-1)) + (-1);
         }
         function pararNuevaVentana(){
-            nuevaVentana.onmouseover="";
+            nuevaVentana.removeEventListener("mouseover",escapa);
+            nuevaVentana.focus();
         }
         function arb(){
             nuevaVentana.moveBy(0,-50);
