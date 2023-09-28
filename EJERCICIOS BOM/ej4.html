@@ -38,7 +38,7 @@ function abrirNuevaVentana() {
             nuevaVentana.moveTo(getRandom(screen.width),getRandom(screen.height))
         }
         function getRandom( max) {
-            return Math.random() * (max - (-1)) + (-1);
+            return Math.random() * (max +1);
         }
         function pararNuevaVentana(){
             nuevaVentana.removeEventListener("mouseover",escapa);

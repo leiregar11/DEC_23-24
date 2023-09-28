@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej1-Leire</title>
+</head>
+
+<body>
+    <input type="button" id="1" value="1">
+    <input type="button" id="2" value="2">
+    <input type="button" id="3" value="3">
+    <p id="texto"></p>
+    <script>
+        window.onload=iniciar;
+        function iniciar(){
+
+            let botones=document.getElementsByTagName("input");
+        
+            for (let index = 0; index < botones.length; index++) {
+                botones[index].addEventListener("click", identificar);
+                // botones[index].onclick=identificar;
+                
+            }
+        }
+        function identificar(){
+            let texto=document.getElementById("texto");
+            texto.textContent=this.value;
+    
+        }
+    
+    </script>
+</body>
+</html>

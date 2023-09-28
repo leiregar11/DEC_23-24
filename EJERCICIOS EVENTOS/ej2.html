@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>Eventos ej2</title> 
+    </head>
+
+    <body>
+        <p>Este texto debe aumentar de tamaño</p>
+        <p>Este texto debe aumentar de tamaño</p>
+        <p>Este texto debe aumentar de tamaño</p>
+
+        <script>
+            window.onload=iniciar;
+            function iniciar(){
+                let textos=document.getElementsByTagName("p");
+
+                for (let i = 0; i < textos.length; i++) {
+                    textos[i].style.fontSize="16px";
+                    textos[i].addEventListener("click", aumentar);
+                    
+                }
+            }
+            // function aumentar(evento){
+            //     var estilo = window.getComputedStyle(evento.target, null);
+            //     var fontSize = parseInt(estilo.getPropertyValue('font-size'));
+            //     fontSize += 4;
+            //     evento.target.style.fontSize = fontSize + 'px';
+            // }
+            function aumentar(){
+                var fontSize = this.style.fontSize;
+                fontSize=fontSize.replace("px","");
+                this.style.fontSize = (parseInt(fontSize)+4)+"px";
+            }
+
+        </script>
+    </body>
+</html>

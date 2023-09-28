@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>Eventos ej3</title> 
+    </head>
+
+    <body>
+        <h1>Enlaces de colores</h1>
+        <a>Cambiar a rojo</a><br/>
+        <a> Cambiar a azul</a><br/>
+        <h2 id="cambiar">Esta línea debe cambiar de color.</h2>
+    </body>
+
+    <script>
+        window.onload=iniciar;
+        // function iniciar(){
+        //     let enlaces=document.getElementsByTagName("a");
+
+        //     enlaces[0].addEventListener("click",rojo);
+        //     enlaces[1].addEventListener("click",azul);
+        // }
+        
+        // function rojo(){
+        //     var texto=document.getElementById("cambiar");
+
+        //     texto.style.color="red";
+        // }
+        // function azul(){
+        //     var texto=document.getElementById("cambiar");
+
+        //     texto.style.color="blue";
+        // }
+
+        function iniciar(){
+            let enlaces=document.getElementsByTagName("a");
+
+            for (let i = 0; i < enlaces.length; i++) {
+                enlaces[i].addEventListener("click",cambiarColor);                
+            }
+        }
+        
+        function cambiarColor(){
+            var texto=document.getElementById("cambiar");
+            if(this.textContent.indexOf("rojo")>=0){
+                texto.style.color="red";
+            }
+            else{
+                texto.style.color="blue";
+            }
+            
+        }
+
+
+    </script>
+</html>

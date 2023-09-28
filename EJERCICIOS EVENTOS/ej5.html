@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ej5</title>
+</head>
+<body>
+    <ul>
+        <li><a href="https://www.adobe.com/es/">Adobe</a></li>
+        <li><a href="https://www.apple.com/es/">Aplle</a></li>
+        <li><a href="https://www.ibm.com/es-es">IBM</a></li>
+    </ul>
+    <input type="text" readonly id="inputEnlace">
+    
+    <script>
+        window.onload=iniciar;
+        function iniciar(){
+            let enlaces = document.getElementsByTagName("a");
+        let inputEnlace = document.getElementById("inputEnlace");
+
+        for (let i = 0; i < enlaces.length; i++) {
+            enlaces[i].addEventListener("mouseover",mostrarEnlace);
+            enlaces[i].addEventListener("mouseout",limpiar);
+            
+        }
+        }
+        
+
+        function mostrarEnlace() {
+            inputEnlace.value = this.getAttribute("href");
+        }
+
+        function limpiar() {
+            inputEnlace.value = "";
+        }
+    </script>
+</body>
+</html>

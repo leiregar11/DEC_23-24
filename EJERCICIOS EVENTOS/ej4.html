@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Eventos ej4</title> 
+</head>
+<style type="text/css">
+.linea{
+	height:100px; 
+	width:100px; 
+	background:blue;
+	display:inline-block;
+}
+</style>
+<body>
+<div class="linea">ASR31</div>
+<div class="linea">ASR32</div>
+<div class="linea">SM21</div>
+<div class="linea">SM22</div>
+<div class="linea">DW31</div>
+<div class="linea">DW32</div>
+</body>
+<script>
+    window.onload=iniciar;
+    function iniciar(){
+        let clases=document.getElementsByClassName("linea");
+
+        for (let i = 0; i < clases.length; i++) {
+            clases[i].addEventListener('mouseover', cambiarColor);
+            clases[i].addEventListener('mouseout', cambiarColor);
+            clases[i].addEventListener('click', cambiarColor);
+            
+        }
+    }
+    function cambiarColor(){
+        var elemento = event.target;
+            if (event.type === 'mouseover') {
+                elemento.style.background = 'green'; // Al pasar el ratón por encima
+            } else if (event.type === 'mouseout') {
+                elemento.style.background = 'blue'; // Al mover el ratón fuera
+            } else if (event.type === 'click') {
+                elemento.style.background = 'red'; // Al hacer clic
+            }
+    }
+</script>
+</html>
