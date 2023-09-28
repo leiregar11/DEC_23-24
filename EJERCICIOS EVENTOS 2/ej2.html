@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJ2-Leire</title>
+</head>
+<body>
+    <div id="botones">
+
+    </div>
+    <p id="imprimir"></p>
+</body>
+<script>
+    window.onload=inicio;
+    function inicio(){
+        let div=document.getElementById("botones");
+        for (let i = 0; i < 10; i++) {
+            div.appendChild(crearBoton(i));
+            
+        }
+    }
+    function crearBoton(num){
+        let boton=document.createElement("button");
+        boton.value=num;
+        boton.textContent=num;
+        boton.addEventListener("click",imprimirNum);
+
+        return boton;
+    }
+    function imprimirNum(evento){
+        let parrafo=document.getElementById("imprimir");
+        let texto=parrafo.textContent;
+        texto=texto+evento.target.value;
+        parrafo.textContent=texto;
+        // console.log(texto);
+    }
+</script>
+</html>

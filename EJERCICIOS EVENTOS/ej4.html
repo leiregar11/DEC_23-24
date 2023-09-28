@@ -31,14 +31,15 @@
             
         }
     }
-    function cambiarColor(){
-        var elemento = event.target;
-            if (event.type === 'mouseover') {
-                elemento.style.background = 'green'; // Al pasar el ratón por encima
-            } else if (event.type === 'mouseout') {
-                elemento.style.background = 'blue'; // Al mover el ratón fuera
-            } else if (event.type === 'click') {
-                elemento.style.background = 'red'; // Al hacer clic
+    function cambiarColor(evento){
+            if (evento.type === 'mouseover') {
+                evento.target.style.background = 'green'; // Al pasar el ratón por encima cambia a verde
+            } else if (evento.type === 'mouseout') {
+                evento.target.style.background = 'blue'; // Al mover el ratón fuera cambia a azul
+            } else if (evento.type === 'click') {
+                evento.target.style.background = 'red'; // Al hacer clic cambia a rojo
+
+                // evento.target.removeEventListener("mouseover",cambiarColor); // para hacer que se mantenga en rojo
             }
     }
 </script>
