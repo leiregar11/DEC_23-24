@@ -4,49 +4,54 @@
     <title>EJ5-Leire</title>
 </head>
 <script>
-    window.onload=inicio;
-    function inicio(){
-        let textArea=document.getElementById("descripcion");
-        textArea.setAttribute("maxlength",10);
-        textArea.addEventListener("keydown", analizarContenido);
-        let contador=document.getElementById("letras");
+    window.onload = inicio;
 
-        contador.innerHTML=textArea.getAttribute('maxlength')+"/"+textArea.getAttribute('maxlength') +" caracteres"
+    function inicio() {
+        let textArea = document.getElementById("descripcion");
+        textArea.setAttribute("maxlength", 140);
+        textArea.addEventListener("input", analizarContenido);
+
+        let contador = document.getElementById("letras");
+        let codigoCaracter = document.getElementById("codigoCaracter");
+
+        contador.innerHTML = textArea.getAttribute('maxlength') + "/" + textArea.getAttribute('maxlength') + " caracteres";
+        mostrarCodigoCaracter(textArea, codigoCaracter);
+        cambiarColor(textArea);
     }
-    var cont=0;
-    function analizarContenido(evento){
-        cont++;
-        console.log(cont);
-        let contador=document.getElementById("letras");
-        // console.log(parseInt(evento.target.getAttribute('maxlength')));
 
-        let dispo=(parseInt(evento.target.getAttribute('maxlength'))-1)-(evento.target.value.length);
-        // console.log(dispo);
-            contador.innerHTML=dispo+"/"+evento.target.getAttribute('maxlength') +" caracteres";
-
+    function analizarContenido(evento) {
+        let contador = document.getElementById("letras");
+        let dispo = parseInt(evento.target.getAttribute('maxlength')) - evento.target.value.length;
+        contador.innerHTML = dispo + "/" + evento.target.getAttribute('maxlength') + " caracteres";
         
-        // tipoCaracter(evento);
+        let codigoCaracter = document.getElementById("codigoCaracter");
+        mostrarCodigoCaracter(evento.target, codigoCaracter);
+        cambiarColor(evento.target);
     }
 
-    function tipoCaracter(evento){
-        let tecla=evento.keyCode;
-    if(tecla!="a"){
-            evento.target.style.color="blue";
-        }
-        else{
-            evento.target.style.color="blue";
+    function mostrarCodigoCaracter(areaTexto, codigoCaracter) {
+        var ultimoCaracter = areaTexto.value.charCodeAt(areaTexto.value.length - 1);
+        codigoCaracter.textContent = "Código del último caracter pulsado: " + ultimoCaracter;
+    }
 
+    function cambiarColor(areaTexto) {
+        var codigoCaracter = document.getElementById("codigoCaracter");
+
+        var ultimoCaracter = areaTexto.value.charCodeAt(areaTexto.value.length - 1);
+
+        // Cambiar el color de fondo si el último carácter es mayúscula
+        if (ultimoCaracter >= 65 && ultimoCaracter <= 90) {
+            codigoCaracter.style.color = "blue";
+        } else {
+            codigoCaracter.style.color = "black";
         }
     }
-    function esMayus(evento) {
-            return (evento >= 65 && evento <= 90);
-        }
-
 </script>
 <body>
 <div align="center">
-<textarea id="descripcion" cols="40" rows="3" name="descripcion"></textarea></br>
-<span id="letras">140/140 caracteres</span>
+    <textarea id="descripcion" cols="40" rows="3" name="descripcion"></textarea><br>
+    <span id="letras">10/10 caracteres</span><br>
+    <span id="codigoCaracter">Código del último caracter pulsado: </span>
 </div>
 </body>
 </html>

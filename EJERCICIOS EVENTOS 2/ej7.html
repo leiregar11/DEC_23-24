@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ej7. l</title>
+</head>
+<style>
+    body{background-color: green;}
+</style>
+<script>
+    window.onload=inicio;
+    
+    function inicio(){
+        window.addEventListener("mousemove", pintar);
+        window.addEventListener("mouseover", pintar);
+    }
+
+    function pintar(){
+        var distanciaAlBordeX = Math.min(event.clientX, window.innerWidth - event.clientX);
+            var distanciaAlBordeY = Math.min(event.clientY, window.innerHeight - event.clientY);
+            var porcentajeX = (distanciaAlBordeX / window.innerWidth) * 100;
+            var porcentajeY = (distanciaAlBordeY / window.innerHeight) * 100;
+            if (porcentajeX < 10 || porcentajeY < 10) {
+                document.body.style.backgroundColor = "red";
+            } else if ((porcentajeX >= 10 && porcentajeX <= 20) || (porcentajeY >= 10 && porcentajeY <= 20)) {
+                document.body.style.backgroundColor = "yellow";
+            }else {
+                document.body.style.backgroundColor = "green";
+            }
+    }
+</script>
+<body>
+    
+</body>
+</html>

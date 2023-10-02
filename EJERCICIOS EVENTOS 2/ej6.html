@@ -5,7 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<script>
+    let nuevaVentana, timeOut;
+    window.onload=inicio;
+    
+    function inicio(){
+        let boton=document.getElementById("crear");
+        boton.addEventListener("click",crearVentana);
+        
+    }
+    function crearVentana(){
+        nuevaVentana = window.open('', '', 'width=200,height=200');
+        nuevaVentana.addEventListener("mousemove",reiniciarCont);
+        nuevaVentana.addEventListener("keydown",reiniciarCont);
+        timeOut=setTimeout(cerrarVentana, 5000);
+
+    }
+    function reiniciarCont(event){
+        clearTimeout(timeOut); // Borra el temporizador existente.
+        timeOut=setTimeout(cerrarVentana,5000);
+
+    }
+    function cerrarVentana(){
+        nuevaVentana.close();
+    }
+</script>
 <body>
-    <button>Presiona para crear una pagina</button>
+    <button id="crear">Presiona para crear una pagina</button>
 </body>
 </html>
