@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ej8-Leire</title>
+</head>
+<style>
+    #cuadrado{
+        background-color: yellow;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+    }
+</style>
+<script>
+    window.onload=inicio;
+    let cuadrado;
+    let posX;
+    let posY;
+    let clicked=false;
+    function inicio(){
+        document.
+        cuadrado=document.getElementById("cuadrado");
+        document.addEventListener("mousemove",mover);
+        cuadrado.addEventListener("mousedown",iniciomover);
+        cuadrado.addEventListener("mouseup",detener);
+        posX =cuadrado.offsetLeft;
+        posY = cuadrado.offsetTop;
+
+    }
+    function mover(event){
+        
+        if(clicked){
+            cuadrado=document.getElementById("cuadrado");
+            cuadrado.style.left = (event.clientX+posX) + 'px';
+            cuadrado.style.top = (event.clientY+posY) + 'px';
+            cuadrado.style.backgroundColor="lightblue";
+        }
+        
+        
+    }
+    function iniciomover(event){
+        clicked=true;
+        var style=window.getComputedStyle(this,null);
+        posX=parseInt(style.getPropertyValue("left"))-event.clientX;
+        posY=parseInt(style.getPropertyValue("top"))-event.clientY;
+    }
+    function detener(event){
+        clicked=false;
+        event.target.style.backgroundColor="yellow";
+    }
+</script>
+<body>
+    <div id="cuadrado">
+
+    </div>
+</body>
+</html>

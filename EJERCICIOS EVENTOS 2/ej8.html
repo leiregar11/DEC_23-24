@@ -10,17 +10,46 @@
         background-color: blueviolet;
         width: 50px;
         height: 50px;
+        position: absolute;
     }
 </style>
 <script>
     window.onload=inicio;
+    let cubo;
+    let posX;
+    let posY
     function inicio(){
-        let cubo=document.getElementById("cuadrado");
-        cubo.addEventListener("keypress",mover);
 
+        cubo=document.getElementById("cuadrado");
+        document.addEventListener("keydown",mover);
+        posX =cubo.offsetLeft;
+        posY = cubo.offsetTop;
 
     }
-    function mover(){
+    function mover(event){
+        const velocidad = 10;
+        if (event.keyCode === 'ArrowUp') {
+        // Flecha arriba
+        posY -= velocidad;
+    }
+    
+    if (event.keyCode === 'ArrowDown') {
+        // Flecha abajo
+        posY += velocidad;
+    }
+    
+    if (event.keyCode === 'ArrowLeft') {
+        // Flecha izquierda
+        posX -= velocidad;
+    }
+    
+    if (event.keyCode === 'ArrowRight') {
+        // Flecha derecha
+        posX += velocidad;
+    }
+
+    cubo.style.left = posX + 'px';
+    cubo.style.top = posY + 'px';
         
     }
 </script>
