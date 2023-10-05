@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ej2-leire</title>
+    <style>
+        .cuadrado {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cuadrado" ></div>
+    <div class="cuadrado" ></div>
+    <div class="cuadrado" ></div>
+    <div class="cuadrado" ></div>
+
+    <form id="colorForm">
+        <label for="cuadrado">Selecciona un cuadrado:</label>
+        <select id="cuadrado" name="cuadrado">
+            <option value="0">Cuadrado 1</option>
+            <option value="1">Cuadrado 2</option>
+            <option value="2">Cuadrado 3</option>
+            <option value="3">Cuadrado 4</option>
+        </select>
+
+        <label for="color">Selecciona un color:</label>
+        <select id="color" name="color">
+            <option value="red">Rojo</option>
+            <option value="green">Verde</option>
+            <option value="blue">Azul</option>
+            <option value="yellow">Amarillo</option>
+        </select>
+
+        <button type="button" id="enviar">Cambiar Color</button>
+    </form>
+
+    <script>
+        window.onload=inicio;
+        function inicio(){
+            document.getElementById("enviar").addEventListener("click",cambiarColor);
+            
+        }
+        function cambiarColor() {
+            var cuadrados = document.getElementsByClassName("cuadrado");
+            var cuadradoSeleccionado= cuadrados[document.getElementById('cuadrado').selectedIndex];
+            var colorSeleccionado = document.getElementById('color').value;
+            cuadradoSeleccionado.style.backgroundColor = colorSeleccionado;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ej1</title>
+</head>
+<script>
+
+    window.onload=inicio;
+
+    function inicio(){
+        
+        document.getElementById("formu").addEventListener("submit",validar);
+        event.preventDefault();
+
+    }
+    function validar(event){
+        
+
+        let mensajesVacios=comprobarFormulario();
+        if(mensajesVacios!==""){
+            // event.preventDefault();
+            alert(mensajesVacios);
+        }else{
+            mostrarDatos();
+        }
+    }
+        function comprobarFormulario() {
+            
+            var mensaje="";
+            let elemetos=document.getElementById("formu").elements;
+            for (let i = 0; i < elemetos.length; i++) {
+                let elemento = elemetos[i];
+                if(elemento.type==="text"&& elemento.value===""){
+                    mensaje+="El campo "+ elemento.name+" esta vacio \n";
+                }
+                
+            }
+            return mensaje;
+        }
+
+        function mostrarDatos() {
+            
+
+            let mensaje="Los datos introducidos son:\n";
+            let elemetos=document.getElementById("formu").elements;
+            for (let i = 0; i < elemetos.length; i++) {
+                let elemento = elemetos[i];
+                if(elemento.type==="text"){
+                    mensaje+= elemento.name+": "+elemento.value+"\n";
+                }
+                
+            }
+            alert(mensaje);
+        }
+
+</script>
+<body>
+    <form id="formu">
+        <label>Nombre<input type="text" name="nombre"></label>
+        <label>Apellido<input type="text" name="apellido"></label>
+        <label>Direccion<input type="text" name="direccion"></label>
+        <input type="submit" name="enviar" value="enviar">
+    </form>
+</body>
+</html>
