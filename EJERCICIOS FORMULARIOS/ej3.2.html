@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ej3-leire</title>
     <style>
-        .error-message {
+        .error{
             color: red;
         }
     </style>
@@ -14,22 +14,46 @@
         window.onload=inicio;
         function inicio(){
             var formulario = document.getElementById("formulario");
-            var textarea = document.getElementsByName("problema")[0];
+            formulario.elements["problema"].addEventListener("keypress", textMax);            ;
             
             formulario.addEventListener("submit", validar);
-            textarea.addEventListener("keypress", textMax);
         }
         function validar(event) {
-            let nombre=document.getElementsByName("nombre")[0].value;
-            let apellidos=document.getElementsByName("apellidos")[0].value;
-            let problema=document.getElementsByName("problema")[0].value;
-            let telefono=document.getElementsByName("telefono")[0].value;
-            let email=document.getElementsByName("email")[0].value;
-            if(textValido(nombre)|| textValido(apellidos)|| textValido(problema)|| telfValido(telefono) ||emailValido(email)){
-                alert("Nombre: "+nombre)
-            }else{
-                event.preventDefault();
+            for (let i = 0; i < elemetos.length; i++) {
+                let elemento = elemetos[i];
+                if(!correcto(elemento)){
+                    elemento.clasName="error";
+                    event.preventDefault();
+                }else {
+                    elemento.classList.remove("error");
+                }
+                
             }
+            
+        }
+        function correcto(elemento){
+            let tipo=elemento.type;
+            if(tipo==="text"){
+                if(textValido(nombre)|| textValido(apellidos)){
+                    return true;
+                }
+            }
+            if(tipo==="textarea"){
+                if(textValido(problema)){
+                    return true;
+                }
+            }
+            if(tipo==="tel"){
+                if(telfValido(telefono)){
+                    return true;
+                }
+            }else{
+                if( emailValido(email)){
+                    return true;
+                }
+            }
+            
+            return false;
         }
         function textValido(text){
             if(text!==""){
@@ -39,18 +63,18 @@
         }
         function textMax(event){
             if(this.value.length===10){
-                alert("El tamaño maximo es 100");
+                // alert("El tamaño maximo es 100");
                 event.preventDefault();
             }
         }
         function telfValido(telf){
-            if(!isNaN(telf)||telf.length<9 ){
+            if(telf.length>9 ||telf.length<9 ||textValido(telf)){
                 return true;
             }
             return false;
         }
         function emailValido(email){
-            if(email.indexOf("@")<0 && email.indexOf("@")>email.lastIndexOf(".")){
+            if(email.indexOf("@") && email.indexOf(".")||textValido(email)){
                 return true;
             }
             return false;
