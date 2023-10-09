@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+    .error {
+        background-color: #b80000;
+    }
+</style>
+<script>
+    var inputs;
+    var index;
+    var enviar=false;
+    window.onload=inicio;
+    
+    function inicio(){
+        inputs=document.getElementsByTagName("input");
+        let formulario= document.getElementById("form");
+        // formulario.addEventListener("submit",permitirEnvio);
+        inputs[0].focus();
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].addEventListener("keypress",siguiente);
+            
+        }
+
+    }
+
+    function siguiente(event) {
+        let currentIndex = Array.from(inputs).indexOf(this);
+        let nextIndex = (currentIndex + 1) ;
+        if(event.key=="Enter"){
+            if(this.value==""){
+                this.style.backgroundColor="red";
+                enviar=false;
+                // inputs[currentIndex].blur();
+            }else{
+                this.style.backgroundColor="white";
+                enviar=true;
+            }
+            console.log("cambia");
+            // Asegura un bucle circular
+            inputs[nextIndex].focus();
+            
+        }
+        
+    }
+
+    function permitirEnvio(event){
+        if(enviar===false){
+            event.preventDefault();
+        }
+    }
+    
+    </script>
+<body>
+    <form id="form">
+        
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" required>
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" name="apellidos" required>
+            <br>       
+        <label for="direccion">Dirección:</label>
+        <input type="text" name="direccion" required>
+                
+             
+        <label for="poblacion">Población:</label>
+        <input type="text" name="poblacion" required>
+         <br>
+        <label for="codigo-postal">Código Postal:</label>
+        <input type="text" name="codigo-postal" required>
+        
+        <label for="provincia">Provincia:</label>
+        <input type="text" name="provincia" required>
+        <br> 
+
+        <button type="submit" id="enviar-btn">Enviar</button>
+        <button type="reset">Limpiar</button>
+        
+    </form>
+</body>
+</html>
