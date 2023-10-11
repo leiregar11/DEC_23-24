@@ -16,6 +16,8 @@
         formulario= document.getElementById("form");
         let reset=document.getElementById("limpiar");
         reset.addEventListener("click",limpiar);
+        formulario.elements["enviar"].disabled = true;
+
         inputs[0].focus();
         for (let i = 0; i < inputs.length; i++) {
             inputs[i].addEventListener("keypress",siguiente);
@@ -26,11 +28,12 @@
     }
 
     function limpiar(event) {
+        formulario.elements["enviar"].disabled = true;
+
         let elementos=document.getElementById("form").elements;
             for (let i = 0; i < elementos.length;i++) {
             
                 if(elementos[i].type === "text"){
-                    console.log("hola");
                     elementos[i].style.backgroundColor = "white";
                     if(elementos[i].name=="nombre"){
                         elementos[i].focus();

@@ -9,6 +9,7 @@
 <script>
     var inputs;
     var formulario;
+    var permitirEnviar=0;
     window.onload=inicio;
     
     function inicio(){
@@ -16,6 +17,7 @@
         formulario= document.getElementById("form");
         let reset=document.getElementById("limpiar");
         reset.addEventListener("click",limpiar);
+        formulario.elements["enviar"].disabled = true;
         inputs[0].focus();
         for (let i = 0; i < inputs.length; i++) {
             inputs[i].addEventListener("keypress",siguiente);
@@ -26,6 +28,7 @@
     }
 
     function limpiar(event) {
+        formulario.elements["enviar"].disabled = true;
         let elementos=document.getElementById("form").elements;
             for (let i = 0; i < elementos.length;i++) {
             
@@ -64,16 +67,17 @@
                 enviar = false;
             } else {
                 elementos[i].style.backgroundColor = "white"; // Restablece el fondo a blanco si se completa el campo
+                permitirEnviar++;
             }
             break;
         }
 
-        // if (elementos[i].type === "text" && elementos[i].value === "") {
-        //     elementos[i].style.backgroundColor = "red";
-        //     enviar = false;
-        // }
+        if (elementos[i].type === "text" && elementos[i].value === "") {
+            elementos[i].style.backgroundColor = "red";
+            enviar = false;
+        }
     }
-    if (enviar) {
+    if (permitirEnviar!=elementos.length) {
         formulario.elements["enviar"].disabled = false;
     } else {
         formulario.elements["enviar"].disabled = true;
