@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DWEC Tarea - 1a Eval.</title>
+	
+	<style>
+		form, div {
+			padding: 10px;
+			border: 1px solid;
+			display: inline block;
+			float: left;
+		}
+	</style>
+	
+	<script type="text/javascript">
+		window.onload=iniciar;
+		var paises = {
+			"01": ["USA", "flags_USA.jpg"],
+			"55": ["Brasil", "flags_brasil.jpg"],
+			"32": ["Belgium", "flags_belgium.jpg"],
+			"33": ["France", "flags_france.jpg"],
+			"34": ["Spain", "flags_spain.jpg"],
+			"39": ["Italy", "flags_italy.jpg"],
+			"44": ["UK", "flags_UK.jpg"],
+			"46": ["Sweeden", "flags_sweeden.jpg"],
+			"49": ["Germany", "flags_germany.jpg"],
+			"07": ["Rusia", "flags_rusia.jpg"],
+			"81": ["Japan", "flags_japan.jpg"],
+			"86": ["China", "flags_china.jpg"],
+			"91": ["India", "flags_india.jpg"],
+			"61": ["Australia", "flags_australia.jpg"],
+			"64": ["New Zealand", "flags_new_zealand.jpg"],
+		};
+
+		var ventanaNum;
+		var selectPais
+		// inicializa la aplicacion y manjeadores de eventos
+		function iniciar(){
+			let crearNum=document.getElementsByName("crearNum")[0];
+			crearNum.addEventListener("click" ,mostrarBotonera);
+			
+		}
+		
+		// inicializa la ventana nueva con los botones, selector de prefijo e inicializa los manejadores de eventos asociados
+		function mostrarBotonera() {
+			
+			ventanaNum=window.open("", "Telefono", "width=400,height=300");
+			ventanaNum.appendChild(cargaPaisesBandera());
+
+			borrar=document.createElement("button");
+			borrar.name="borrar";
+			borrar.value="borrar";
+			borrar.textContent="borrar";
+			borrar.addEventListener("click",borrarNumero);
+			ventana.document.body.appendChild(borrar);
+			for (let i = 0; i < 10; i++) {
+				let numero=document.createElement("button");
+				numero.name="numero";
+				numero.value=i;
+				numero.textContent=i;
+				numero.addEventListener("click",mostrarNumero);
+				ventana.document.body.appendChild(numero);
+			}
+		}
+		
+		// carga la lista de paises y banderas en el selector de prefijo
+		function cargaPaisesBandera() {
+			selectPais=ventanaNum.createElemet("select");
+			for (var prefijo in paises) {
+			var pais = paises[prefijo][0];
+			var bandera = paises[prefijo][1];
+				let option=ventanaNum.createElemet("option");
+				option.value=prefijo;
+				option.textContent=pais;
+				option.id=bandera;
+			selectPais.appendChild(option);
+			}
+			return selectPais;
+		}
+
+		// carga las imagenes de las banderas según la selección realizada
+		function cargaBandera() {
+
+		}
+
+		// muestra el numero + prefijo en el formulario principal
+		function mostrarNumero(){
+			
+			var prefijoCampo = window.opener.document.getElementsByName("prefijo")[0];
+			prefijoCampo.value = selectPais.value;
+		}
+		
+		// borra el numero del formulario principal
+		function borrarNumero() {
+		
+		}
+		
+		// garda nuevo contacto, si el formulario es correcto y si no existe un 'alias'similar
+		function guardarContacto(){
+		
+		}
+		
+		// comprueba si el formulario está rellenado correctamente
+		function validar(){
+		
+		}
+		
+		// carga la información en los campos del formulario segun el contacto seleccionado
+		function cargaContacto() {
+		
+		}
+
+	</script>
+</head>
+
+<body>
+	
+	<form>
+		<div>
+			<label for="nombre">Nombre:
+        <input type="text" name="nombre" ></label>
+
+        <label for="apellido">Apellido:
+        <input type="text" name="apellido" ></label>
+
+		
+        <label for="alias">Alias:
+        <input type="text" name="alias" ></label><br><br>
+
+		<label for="email">email:
+        <input type="email" name="email" ></label>
+
+        <label for="telefono">Teléfono:
+		 <input type="text" name="prefijo" id="prefijo" disabled> <!--tiene id para ponerle tamaño -->
+        <input type="tel" name="telefono" pattern="[0-9]+"  disabled>
+		<input type="button" name="crearNum" value="..."></label><br><br>
+
+        <label for="profesor">Profesor:
+		<input type="radio" name="opcion" value="profesor"></label>
+		<label for="alumno">Alumno:
+			<input type="radio" name="opcion"  value="alumno"></label><br><br>
+        <input type="submit" name="guardar" value="Guardar">
+		</div>
+		<select name="contactos" >
+			<option value="0">Contactos...</option>
+		</select>
+	</form>
+	
+</body>
+</html>
