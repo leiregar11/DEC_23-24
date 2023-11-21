@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DWEC Tarea - 1a Eval.</title>
+	
+	<style>
+		form, div {
+			padding: 10px;
+			border: 1px solid;
+			display: inline block;
+			float: left;
+		}
+		#prefijo{
+			width: 2%;
+		}
+		
+	</style>
+	
+	<script type="text/javascript">
+		window.onload=iniciar;
+		var paises = [
+				{ prefijo: "01", pais: "USA", bandera: "flags_USA.jpg" },
+				{ prefijo: "55", pais: "Brasil", bandera: "flags_brasil.jpg" },
+				{ prefijo: "32", pais: "Belgium", bandera:"flags_belgium.jpg"},
+				{ prefijo: "33", pais: "France", bandera:"flags_france.jpg"},
+				{ prefijo: "34", pais: "Spain", bandera:"flags_spain.jpg"},
+				{ prefijo: "39", pais: "Italy", bandera:"flags_italy.jpg"},
+				{ prefijo: "44", pais: "UK", bandera:"flags_UK.jpg"},
+				{ prefijo: "46", pais: "Sweeden", bandera:"flags_sweeden.jpg"},
+				{ prefijo: "49", pais: "Germany", bandera:"flags_germany.jpg"},
+				{ prefijo: "07", pais: "Rusia", bandera:"flags_rusia.jpg"},
+				{ prefijo: "81", pais: "Japan", bandera:"flags_japan.jpg"},
+				{ prefijo: "86", pais: "China", bandera:"flags_china.jpg"},
+				{ prefijo: "91", pais: "India", bandera:"flags_india.jpg"},
+				{ prefijo: "61", pais: "Australia", bandera:"flags_australia.jpg"},
+				{ prefijo: "64", pais: "New Zealand", bandera:"flags_new_zealand.jpg"}
+			];
+
+		var ventanaNum;
+		var selectPais;
+		var agenda=[];
+		let telf;
+		let prefi;
+		// inicializa la aplicacion y manjeadores de eventos
+		function iniciar(){
+
+			
+			telf=document.getElementsByName("telefono")[0];
+			prefi=document.getElementsByName("prefijo")[0];
+			let crearNum=document.getElementsByName("crearNum")[0];
+			crearNum.addEventListener("click" ,mostrarBotonera);
+			let guardar=document.getElementsByName("guardar")[0];
+			guardar.addEventListener("click" ,validar);
+			let contactos=document.getElementsByName("contactos")[0];
+			contactos.addEventListener("click" ,cargaContacto);
+			
+		}
+		
+		// inicializa la ventana nueva con los botones, selector de prefijo e inicializa los manejadores de eventos asociados
+		function mostrarBotonera() {
+			
+			ventanaNum=window.open("", "Telefono", "width=400,height=300");
+			var labelPais = ventanaNum.document.createElement("label");
+			labelPais.innerHTML = "Pais:";
+			ventanaNum.document.body.appendChild(labelPais);
+			cargaPaisesBandera();
+
+			borrar=document.createElement("button");
+			borrar.name="borrar";
+			borrar.value="borrar";
+			borrar.textContent="borrar";
+			borrar.addEventListener("click",borrarNumero);
+			ventanaNum.document.body.appendChild(borrar);
+			for (let i = 0; i < 10; i++) {
+				let numero=document.createElement("button");
+				numero.name="numero";
+				numero.value=i;
+				numero.textContent=i;
+				numero.addEventListener("click",mostrarNumero);
+				ventanaNum.document.body.appendChild(numero);
+			}
+		}
+		
+		// carga la lista de paises y banderas en el selector de prefijo
+		function cargaPaisesBandera() {
+			selectPais=document.createElement("select");
+			
+			paises.forEach(function (pais) {
+				var option = document.createElement("option");
+				option.value = pais.prefijo;
+				option.innerHTML = pais.pais;
+				selectPais.appendChild(option);
+			});
+			selectPais.addEventListener("change",cargaBandera);
+			selectPais.addEventListener("change",mostrarNumero);
+			ventanaNum.document.body.appendChild( selectPais);
+		}
+
+		// carga las imagenes de las banderas según la selección realizada
+		function cargaBandera() {
+			var selectedValue = event.target.value;
+			
+			for (var pais in paises) {
+				if (pais.prefijo === selectedValue) {
+					let img=document.createElement("img");
+					img.src="flags/"+pais.bandera;
+					ventanaNum.document.body.appendChild(img);
+					
+				} 
+			};
+		}
+
+		// muestra el numero + prefijo en el formulario principal
+		function mostrarNumero(){
+			
+			if (event.target.tagName === 'BUTTON') {
+				telf.value += event.target.value;
+			} else if (event.target.tagName === 'SELECT') {
+				prefi.value = "+"+event.target.value;
+				console.log(prefi.value);
+			} else if (event.type = "keydown") {
+				if (!isNaN(event.key)) {
+					telf.value += event.key;
+				}
+			}
+		}
+		
+		// borra el numero del formulario principal
+		function borrarNumero() {
+			telf.value=telf.value.substring(0, telf.value.length -1);
+		}
+		
+		// garda nuevo contacto, si el formulario es correcto y si no existe un 'alias'similar
+		function guardarContacto(){
+			var nombre = document.getElementsByName("nombre").value;
+			var apellido = document.getElementsByName("apellido").value;
+			var alias = document.getElementsByName("alias").value;
+			var email = document.getElementsByName("email").value;
+			var prefijo = document.getElementsByName("prefijo").value;
+			var telefono = document.getElementsByName("telefono").value;
+			var radioSeleccionado = document.getElementsByName("opcion").value;
+			
+
+			for (var i = 0; i < agenda.length; i++) {
+				if (agenda[i].alias === alias ) {
+					alert('Alias ya existente');
+				return null; 
+				}
+			}
+
+			var nContacto = {
+				nombre: nombre,
+				apellido: apellido,
+				alias: alias,
+				email: email,
+				telefono: telefono,
+				radio: radioSeleccionado,
+				prefijo: prefijo
+			};
+			agenda.push(nContacto);
+
+			var opcion = document.createElement("option");
+			opcion.textContent = nContacto.alias;
+			let contactos=document.getElementsByName("contactos")[0];
+
+			contactos.appendChild(opcion);
+		}
+		
+		// comprueba si el formulario está rellenado correctamente
+		function validar(){
+            let nombre=document.getElementsByName("nombre")[0].value;
+            let apellido=document.getElementsByName("apellido")[0].value;
+            let alias=document.getElementsByName("alias")[0].value;
+            let telefono=document.getElementsByName("telefono")[0].value;
+            let email=document.getElementsByName("email")[0].value;
+            if(textInvalido(nombre)|| textInvalido(apellidos)|| textInvalido(alias)|| telfInvalido(telefono) ||emailInvalido(email)){
+                alert("Formulario incompleto");
+            }else{
+                guardarContacto();
+            }
+        }
+        
+		function textInvalido(text){
+            if(text===""){
+                return true;
+            }
+            return false;
+        }
+
+			function telfInvalido(telf){
+            if(!isNaN(telf)||telf.length<9 ){
+                return true;
+            }
+            return false;
+        }
+        function emailInvalido(email){
+            if(email.indexOf("@")<0 && email.indexOf("@")>email.lastIndexOf(".")){
+                return true;
+            }
+            return false;
+        }
+		
+		// carga la información en los campos del formulario segun el contacto seleccionado
+		function cargaContacto() {
+			function cargaContacto() {
+			for (let i = 0; i < contactos.length; i++) {
+				if (contactos[i].alias === this.value) {
+					document.getElementsByName("nombre").value = agenda[i].nombre;
+					document.getElementsByName("apellido").value = agenda[i].apellido;
+					document.getElementsByName("alias").value = agenda[i].alias;
+					document.getElementsByName("email").value = agenda[i].email;
+					document.getElementsByName("prefijo").value = agenda[i].prefijo;
+					document.getElementsByName("telefono").value = agenda[i].telefono;
+					document.getElementsByName("opcion").value = agenda[i].radio;
+				}
+			}
+		}
+		}
+
+	</script>
+</head>
+
+<body>
+	
+	<form>
+		<div>
+			<label for="nombre">Nombre:
+        <input type="text" name="nombre" ></label>
+
+        <label for="apellido">Apellido:
+        <input type="text" name="apellido" ></label>
+
+		
+        <label for="alias">Alias:
+        <input type="text" name="alias" ></label><br><br>
+
+		<label for="email">email:
+        <input type="email" name="email" ></label>
+
+        <label for="telefono">Teléfono:
+		 <input type="text" name="prefijo" id="prefijo" disabled> <!--tiene id para ponerle tamaño -->
+        <input type="tel" name="telefono" pattern="[0-9]+"  disabled>
+		<input type="button" name="crearNum" value="..."></label><br><br>
+
+        <label for="profesor">Profesor:
+		<input type="radio" name="opcion" value="profesor"></label>
+		<label for="alumno">Alumno:
+			<input type="radio" name="opcion"  value="alumno"></label><br><br>
+        <input type="submit" name="guardar" value="Guardar">
+		</div>
+		<select name="contactos" >
+			<option value="0">Contactos...</option>
+		</select>
+	</form>
+	
+</body>
+</html>
